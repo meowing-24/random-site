@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Discord File Analyzer</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/static/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -12,10 +12,10 @@
     <h1>Discord File Analyzer</h1>
     <p>Upload your Discord export files to get instant insights.</p>
 
-<form action="/api/index" method="post" enctype="multipart/form-data">
-  <input type="file" name="file" required>
-  <button type="submit">Analyze File</button>
-</form>
+    <form id="uploadForm" action="/api/index" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" id="fileInput" required>
+      <button type="submit">Analyze File</button>
+    </form>
 
     <div id="result" class="hidden"></div>
   </div>
@@ -37,7 +37,7 @@
       result.classList.remove('hidden');
 
       try {
-        const response = await fetch('/api/upload', {
+        const response = await fetch('/api/index', {
           method: 'POST',
           body: formData
         });
