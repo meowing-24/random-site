@@ -4,7 +4,6 @@ import requests
 
 app = Flask(__name__)
 
-# IMPORTANT: route must be "/"
 @app.route("/", methods=["POST"])
 def upload():
     uploaded_file = request.files.get("file")
@@ -14,9 +13,8 @@ def upload():
     content = uploaded_file.read().decode("utf-8")
     line_count = len(content.splitlines())
 
-    # Use environment variable for webhook
     webhook_url = os.environ.get("WEBHOOK_URL")
     if webhook_url:
         requests.post(webhook_url, json={"summary": f"User uploaded a file with {line_count} lines"})
 
-    return jsonify({"message": "File processed safely", "lines": line_count})a
+    return jsonify({"message": "File processed safely", "lines": line_count})
