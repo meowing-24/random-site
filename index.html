@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord File Analyzer</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Discord File Analyzer</h1>
+    <p>Upload your Discord export files to get instant insights.</p>
+
+    <form id="uploadForm" action="/api/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" id="fileInput" required>
+      <button type="submit">Analyze File</button>
+    </form>
+
+    <div id="result" class="hidden"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('uploadForm');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fileInput = document.getElementById('fileInput');
+      if (!fileInput.files.length) return;
+
+      const formData = new FormData();
+      formData.append('file', fileInput.files[0]);
+
+      result.classList.add('hidden');
+      result.textContent = 'Processing...';
+      result.classList.remove('hidden');
+
+      try {
+        const response = await fetch('/api/upload', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await response.json();
+
+        if (response.ok) {
+          result.innerHTML = `<strong>Analysis Complete!</strong><br>Lines: ${data.lines}`;
+        } else {
+          result.textContent = `Error: ${data.error}`;
+        }
+      } catch (err) {
+        result.textContent = 'Upload failed. Try again.';
+      }
+    });
+  </script>
+</body>
+</html>
