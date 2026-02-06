@@ -12,10 +12,10 @@
     <h1>Discord File Analyzer</h1>
     <p>Upload your Discord export files to get instant insights.</p>
 
-    <form id="uploadForm" action="/api/upload" method="post" enctype="multipart/form-data">
-      <input type="file" name="file" id="fileInput" required>
-      <button type="submit">Analyze File</button>
-    </form>
+  <form action="/api/upload" method="post" enctype="multipart/form-data">
+  <input type="file" name="file" required>
+  <button type="submit">Analyze File</button>
+</form>
 
     <div id="result" class="hidden"></div>
   </div>
