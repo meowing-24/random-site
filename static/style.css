@@ -1,0 +1,68 @@
+/* Global */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Container */
+.container {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 450px;
+}
+
+h1 {
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #5865F2; /* Discord-blue accent */
+}
+
+p {
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* File input */
+input[type="file"] {
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+/* Button */
+button {
+  background: #5865F2;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #4752c4;
+}
+
+/* Result */
+#result {
+  margin-top: 25px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #e9f0ff;
+  color: #1a3b8b;
+}
+
+.hidden {
+  display: none;
+}
