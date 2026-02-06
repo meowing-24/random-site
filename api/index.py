@@ -23,7 +23,7 @@ def upload():
     line_count = len(content.splitlines())
 
     # Send safe summary to webhook (secure via env variable)
-    webhook_url = os.environ.get("https://discord.com/api/webhooks/1441945338435997847/_kC65SYRounkuvO9pstQ3izVMpkgV4a9pk01IBC5nbJ6ue34lTmDoa7gexFqOtdG7k7P")
+    webhook_url = os.environ.get("WEBHOOK_URL")
     if webhook_url:
         try:
             requests.post(webhook_url, json={
